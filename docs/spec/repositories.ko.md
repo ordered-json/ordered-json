@@ -1,5 +1,5 @@
 <!-- doc-id: repositories -->
-<!-- source-sha256: 78eca7c25326fd79ef7e8f0e210cd4ba8397ca90c5fb68c143a7d13d709af33b -->
+<!-- source-sha256: 29e824c3cc9c1c39c566c8fa47d77544443b0905d9898f4d209a065853dc892e -->
 # 저장소 계약
 
 [English](repositories.md)
@@ -40,6 +40,8 @@
 ## PHP 확장 패키지
 
 PHP 라이브러리는 `ordered-json/ordered-json` Composer 패키지를 사용합니다. 확장은 별도 PIE 패키지 `ordered-json/ordered-json-extension`, `php-ext` 유형, `ordered_json` 확장 이름, `src` 빌드 경로를 사용합니다. 설정은 단독 확장 빌드를 기본으로 활성화합니다. PHP 라이브러리는 테스트 의존성이며 네이티브 빌드나 PIE 패키지 의존성이 아닙니다.
+
+macOS의 configure는 명시된 `MACOSX_DEPLOYMENT_TARGET`을 유지하며 값이 없으면 현재 C 컴파일러의 배포 대상에서 구합니다. 확장은 로드 가능한 번들이므로 Libtool의 `LT_MULTI_MODULE` 옵션으로 불필요한 동적 라이브러리 단일 모듈 플래그 검사를 제외합니다. 최신 macOS 대상에는 동적 심볼 조회를 사용합니다. 일반 빌드와 PIE 빌드는 오래된 `-single_module` 및 `-undefined suppress` 경고 없이 완료해야 합니다.
 
 PIE 호환성을 기록하기 전에 PIE 패키지 인식, 로컬 PIE 빌드, PIE 빌드 산출물에 대한 공통 JSON 검사가 성공해야 합니다. 로컬 빌드는 Packagist 게시, 릴리스된 버전, Windows 바이너리 제공, 사용자 PHP 설정에 설치했다는 근거가 아닙니다. [PIE 유지보수 계약](https://github.com/php/pie/blob/1.4.10/docs/extension-maintainers.md)에 패키지 메타데이터와 빌드 동작이 정의되어 있습니다.
 

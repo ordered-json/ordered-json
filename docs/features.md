@@ -24,4 +24,6 @@
 <a id="limits"></a>
 ## Verification and distribution limits
 
+Current native macOS and PIE builds have no build warnings. The [aggregate record](verification.json) and [PIE record](pie-verification.json) identify their source revisions and results.
+
 Passing shared cases establishes their recorded acceptance criteria. It does not establish exhaustive input coverage, all declared minimum runtimes, all platforms, or every host encoder integration. See [verification limits](operations/validation.md#limits). Source metadata contains development version strings; this table does not identify a registry release.

@@ -2,13 +2,13 @@
   "schema_version": 1,
   "scope": "pie-build",
   "status": "passed",
-  "checked_at": "2026-09-07T13:37:18+00:00",
+  "checked_at": "2026-09-07T13:57:43+00:00",
   "platform": {
     "system": "Darwin",
     "machine": "arm64"
   },
   "sources": {
-    "sha256": "c3d048a4e89bfe47126af8a8e5c8ce7643c4d5de6fadc38eb8c6b7f4edc13a9f",
+    "sha256": "d7a2c4bc9d4c87c8d247c24d57492ce9d92231a8efbab5a01dc534ffe7d2759d",
     "files": {
       ".gitmodules": "dbc966b262e6eecedce728c6456d9820ba6e5ffce4afa4aa6babd23d5c686602",
       "Makefile": "1ebb3caea29bd194496e1de49e05cb650751857a438560874ceb4cd9e41a6478",
@@ -16,8 +16,8 @@
       "docs/spec/api.md": "06c906c1cc749aed0c0c76e42c847481cfe0509034cebb3527ea16d73f9c0a00",
       "docs/spec/json-contract.ko.md": "c9b26ae9f6dd4954426fedf6717b0aac307e0671c8758e3ce3db8f311ead9067",
       "docs/spec/json-contract.md": "27525c1be0241f6e90d606b4a441e2def782bb5d5984bcd3794da6852fd0f15b",
-      "docs/spec/repositories.ko.md": "e058001ab2a2df9a9d1ecd3cacb9fee28c5939e2841430b4c5d8fc216653ff58",
-      "docs/spec/repositories.md": "78eca7c25326fd79ef7e8f0e210cd4ba8397ca90c5fb68c143a7d13d709af33b",
+      "docs/spec/repositories.ko.md": "814dc13a1b94fb33837fac05200ea8cd1f73e907c978b128a77256e81706eedb",
+      "docs/spec/repositories.md": "29e824c3cc9c1c39c566c8fa47d77544443b0905d9898f4d209a065853dc892e",
       "examples/README.ko.md": "702a4a27ed68590c1a89ccfb7f90568ae187aadd986843f8d02fe614c226b21d",
       "examples/README.md": "5adddda24704fe97a3a005bce6ab4dd2ab91aa89f7c25fa54746ca0d698d1089",
       "examples/official.json": "008b05fe07142d9dcad9edd90fe6606926ccb279461664c19af5a3d0eedac830",
@@ -131,7 +131,7 @@
       "php/src/OrderedJson.php": "00258117ab21c0e7b9b973cb07236ee4e11353d7b402de5a7c63e0357b89866b",
       "php/tests/probe.php": "c93a114abcf1817d457d8ba098052b49658263d4a2e4eceb08cdbc55d2bf4ee1",
       "php-extension/composer.json": "1571c88e25b8302aff403e634abc6ebad100dac1df248ec2b0c0d81ceb37684c",
-      "php-extension/src/config.m4": "13e0ddc6c0e391d7ff11c48f3bdd2a07ea2943684fb01949473d645949054c00",
+      "php-extension/src/config.m4": "1039ac44901bf34856402852b5996ec509ae2883ba83960b455005d8248ba5ed",
       "php-extension/src/config.w32": "52f65b0c0ab32af3bac72f4c1265fac1fd475c52cdd74ae49a54b3fc337e7cf9",
       "php-extension/src/ordered_json.c": "fa7979ab4c8701866a21084e473fe9befd832c2df6c23bf7c9e1e81d73c45454",
       "php-extension/src/ordered_json.stub.php": "5a39353528294cb7a062c567ad5108f092101d886b70990c55c292a676687342",
@@ -199,11 +199,11 @@
       "php-extension/.gitignore": "f7c80f12d5b458d8db860b6d84b2fe6b579230a10323e3066a1b35b0464a4963",
       "php-extension/AGENTS.ko.md": "7f2ec1287940da41d995fdeb2240fac8085ec7a942a9e0e8b7e2ee3ed3426339",
       "php-extension/AGENTS.md": "eaff2471d9b8bf38bbaa6b45f1d3347a601153cd1972771e1a043f0cafaac7b9",
-      "php-extension/CHANGELOG.ko.md": "ba7ac855b7bf1d77520947dca863e0e6fcc21b80a10be86b891817609659d202",
-      "php-extension/CHANGELOG.md": "d4e6837fcb820fca60a685427453e37b72294c81f256caf3a4536b6c57f204be",
+      "php-extension/CHANGELOG.ko.md": "a03c32a2c1c3b301f125ccf904756fe80bd6c32beb5a13bafdb864a17c76272b",
+      "php-extension/CHANGELOG.md": "1ebe9c0ddc45ce11be5ea01aecfde661a629d52b9b31813210bcc7d5eee67aa0",
       "php-extension/Makefile": "e37a58bd6a93915308b48cf09be5f6392d87d91272611e6d24e3bf40713c138b",
-      "php-extension/README.ko.md": "c3666a429f703ecfa59e9ce155a6953e8dc7ee9abe9d50dadd4e70c4500dd7a7",
-      "php-extension/README.md": "ed0a5e1908159cdd9f74985fd16f76e004a96ad1e7bda6036ed4b7f2cdb874d8",
+      "php-extension/README.ko.md": "b65a8b513b917d7c112b58e956d87d54c1e37df0998c42cab4e0efe003966a62",
+      "php-extension/README.md": "3a79fc3d96dd5668969d1bdc6b22f7375b87a2d3383b4cd6a50fb88d7f57f96a",
       "php-extension/conformance.json": "1a36d3b4614e0052ffc8b604efa85b4defc208ceea76728f1cf0fd812c35abaf",
       "php-extension/docs/documentation-manifest.json": "04a8c6765a6421598e4e09fbc1ebc7d8643cf57dd87c91afa1bb8c621836a62b",
       "php-extension/scripts/check.py": "3615120fcd7153531534156a1de89c751012da6bc9f48dcb3269cd3315b403e1",
@@ -233,8 +233,8 @@
     },
     "php-extension": {
       "url": "https://github.com/ordered-json/php-extension.git",
-      "revision": "479d6a28c50f34297fc0a0042a83d46a7a88e6bb",
-      "pinned": "479d6a28c50f34297fc0a0042a83d46a7a88e6bb"
+      "revision": "1dcb0cff184a0618de810febfe651a50b2a06cd0",
+      "pinned": "1dcb0cff184a0618de810febfe651a50b2a06cd0"
     }
   },
   "pie": {
@@ -275,13 +275,10 @@
       "exit_code": 0
     }
   ],
-  "build_warnings": [
-    "checking for -single_module linker flag... ld: warning: -single_module is obsolete",
-    "ld: warning: -undefined suppress is deprecated"
-  ],
+  "build_warnings": [],
   "artifact": {
     "path": "php-extension/src/modules/ordered_json.so",
-    "sha256": "de5a4df40d829d76cdbd662802a6ba9d8020e0a40a4376387b8f185086774238"
+    "sha256": "8cbe179b30c093422b640ad004340398e2f9af59c381a6b6676b5efad5237fba"
   },
   "cases": {
     "official": 17,

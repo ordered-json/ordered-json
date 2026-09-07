@@ -1,5 +1,5 @@
 <!-- doc-id: features -->
-<!-- source-sha256: 45ad085a4827cd8707dfeacde3c0039975c8faf707aca1cbd5113b8b6801f74b -->
+<!-- source-sha256: f527a7178c3c65dd9fa613fd6bc30c1fc074622e37575d9904aa0e7bed607c02 -->
 # 기능 상태
 
 [English](features.md)
@@ -24,5 +24,7 @@
 
 <a id="limits"></a>
 ## 검증 및 배포 한계
+
+현재 네이티브 macOS 빌드와 PIE 빌드에는 빌드 경고가 없습니다. [통합 기록](verification.json)과 [PIE 기록](pie-verification.json)에 소스 개정본과 결과가 있습니다.
 
 공통 사례 통과는 기록된 인수 기준에 대한 검증입니다. 모든 입력, 선언한 최소 런타임 전체, 모든 플랫폼, 모든 호스트 인코더 연동을 검증한 결과는 아닙니다. [검증 한계](operations/validation.ko.md#limits)를 확인합니다. 소스 메타데이터에는 개발 버전 문자열이 있으며 이 표는 레지스트리 릴리스를 나타내지 않습니다.

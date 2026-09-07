@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-09-07T13:36:10+00:00",
+  "checked_at": "2026-09-07T13:59:34+00:00",
   "source": {
     "state": "available",
     "url": "https://github.com/ordered-json/ordered-json",
@@ -67,7 +67,7 @@
       "state": "available",
       "url": "https://github.com/ordered-json/php-extension",
       "branch": "main",
-      "revision": "479d6a28c50f34297fc0a0042a83d46a7a88e6bb",
+      "revision": "1dcb0cff184a0618de810febfe651a50b2a06cd0",
       "visibility": "public",
       "github_releases": [],
       "version_tags": []

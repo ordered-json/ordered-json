@@ -6,6 +6,7 @@
 <a id="unreleased"></a>
 ## Unreleased — 2026-09-07
 
+- Corrected the native macOS deployment target and bundle configuration to remove the obsolete `-single_module` and `-undefined suppress` linker warnings.
 - Published five independent implementation repositories with their existing source histories and replaced common implementation directories with pinned submodules.
 - Added standalone candidate checks using a pinned common verifier and explicit test dependency commits.
 - Added PIE artifact verification using the same shared JSON cases and separate PHP and extension version records.
@@ -22,6 +23,6 @@
 - Changed JSON objects to ordered associative maps. Duplicate keys now overwrite the value while retaining the first key position, so each decoded key has one value. Removed the duplicate lookup and member-list APIs. Default serialization now emits the associative object; source inspection remains available separately.
 - Added JavaScript, Rust, Go, pure PHP, and PHP extension implementations with strict parsing, recursive document order, exact number tokens, and construction APIs.
 - Centralized official inputs and expected results in [official.json](examples/official.json), with shared grammar fixtures and optional supplementary inputs.
-- Verified fresh independent clones and the aggregate submodule checkout with 433 shared cases per implementation. The PIE-built artifact also passed all 433 cases; 42 checker tests passed. Two PHP build-tool linker deprecation warnings are recorded in the verification reports.
+- Verified fresh independent clones and the aggregate submodule checkout with 433 shared cases per implementation. The PIE-built artifact also passed all 433 cases; 42 checker tests passed. That earlier run recorded two PHP build-tool linker deprecation warnings in its [verification record](https://github.com/ordered-json/ordered-json/blob/ee734ae1cd6f26976e28a81e7442b0f1fe11350f/docs/verification.json).
 
 The current [verification record](docs/verification.json) identifies the tested source and results for all five implementations and the documentation checker tests. [Distribution observations](docs/distribution.json) are separate. This entry records development changes and does not declare a package release.
