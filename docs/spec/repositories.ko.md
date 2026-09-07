@@ -1,5 +1,5 @@
 <!-- doc-id: repositories -->
-<!-- source-sha256: 0db37d277a2840942c0e80d5a6b842a374271981de718a3a0acf58408c9de09a -->
+<!-- source-sha256: 78eca7c25326fd79ef7e8f0e210cd4ba8397ca90c5fb68c143a7d13d709af33b -->
 # 저장소 계약
 
 [English](repositories.md)
@@ -41,9 +41,9 @@
 
 PHP 라이브러리는 `ordered-json/ordered-json` Composer 패키지를 사용합니다. 확장은 별도 PIE 패키지 `ordered-json/ordered-json-extension`, `php-ext` 유형, `ordered_json` 확장 이름, `src` 빌드 경로를 사용합니다. 설정은 단독 확장 빌드를 기본으로 활성화합니다. PHP 라이브러리는 테스트 의존성이며 네이티브 빌드나 PIE 패키지 의존성이 아닙니다.
 
-PIE 호환성을 기록하기 전에 PIE 패키지 검사와 로컬 PIE 빌드가 성공해야 합니다. 로컬 빌드는 Packagist 게시, 릴리스된 버전, Windows 바이너리 제공, 사용자 PHP 설정에 설치했다는 근거가 아닙니다. [PIE 유지보수 계약](https://github.com/php/pie/blob/1.5.x/docs/extension-maintainers.md)에 패키지 메타데이터와 빌드 동작이 정의되어 있습니다.
+PIE 호환성을 기록하기 전에 PIE 패키지 인식, 로컬 PIE 빌드, PIE 빌드 산출물에 대한 공통 JSON 검사가 성공해야 합니다. 로컬 빌드는 Packagist 게시, 릴리스된 버전, Windows 바이너리 제공, 사용자 PHP 설정에 설치했다는 근거가 아닙니다. [PIE 유지보수 계약](https://github.com/php/pie/blob/1.4.10/docs/extension-maintainers.md)에 패키지 메타데이터와 빌드 동작이 정의되어 있습니다.
 
 <a id="state"></a>
 ## 구현 상태
 
-저장소 분리를 진행 중입니다. [기능 상태](../features.ko.md)에 이 계약과 별도로 완료 여부와 근거를 기록합니다.
+다섯 구현 저장소를 게시했으며 고정된 서브모듈로 포함합니다. [기능 상태](../features.ko.md)에 이 계약과 별도로 완료 여부와 근거를 기록합니다.

@@ -1,7 +1,8 @@
 {
   "schema_version": 1,
+  "scope": "pie-build",
   "status": "passed",
-  "checked_at": "2026-09-07T13:37:54+00:00",
+  "checked_at": "2026-09-07T13:37:18+00:00",
   "platform": {
     "system": "Darwin",
     "machine": "arm64"
@@ -209,70 +210,6 @@
       "php-extension/src/.gitignore": "a24cea86ccd06d6df27abe4079219b2c4f7b39a83718f7704b36d4e83121b71b"
     }
   },
-  "cases": {
-    "official": 17,
-    "fixtures": 98,
-    "supplementary": 318,
-    "total": 433
-  },
-  "implementations": {
-    "js": {
-      "status": "passed",
-      "cases": 433,
-      "runtime": {
-        "node": "v26.8.1"
-      }
-    },
-    "rust": {
-      "status": "passed",
-      "cases": 433,
-      "runtime": {
-        "rustc": "rustc 1.98.1 (48a229cea 2026-09-01)"
-      }
-    },
-    "go": {
-      "status": "passed",
-      "cases": 433,
-      "runtime": {
-        "go": "go version go1.27.0 darwin/arm64"
-      }
-    },
-    "php": {
-      "status": "passed",
-      "cases": 433,
-      "runtime": {
-        "php": "8.5.10"
-      }
-    },
-    "php-extension": {
-      "status": "passed",
-      "cases": 433,
-      "runtime": {
-        "php": "8.5.10",
-        "extension_version": "0.1.0"
-      }
-    }
-  },
-  "documentation_tests": {
-    "status": "passed",
-    "count": 42
-  },
-  "supplementary": {
-    "project": "nst/JSONTestSuite",
-    "revision": "1ef36fa01286573e846ac449e8683f8833c5b26a",
-    "cases": 318,
-    "inputs_sha256": "dafa7facfed6700b0a2f16207fb1d3b557f9e45d3abd84f2dfb666538d10c332"
-  },
-  "build_warnings": [
-    {
-      "implementation": "php-extension",
-      "message": "checking for -single_module linker flag... ld: warning: -single_module is obsolete"
-    },
-    {
-      "implementation": "php-extension",
-      "message": "ld: warning: -undefined suppress is deprecated"
-    }
-  ],
   "submodules": {
     "javascript": {
       "url": "https://github.com/ordered-json/javascript.git",
@@ -299,5 +236,73 @@
       "revision": "479d6a28c50f34297fc0a0042a83d46a7a88e6bb",
       "pinned": "479d6a28c50f34297fc0a0042a83d46a7a88e6bb"
     }
+  },
+  "pie": {
+    "version": "\ud83e\udd67 PHP Installer for Extensions (PIE) 1.4.10",
+    "phar_sha256": "b88792235c8e80be568436d4cb043b49fd1869c89b64e83d23e2882ae19d70a8"
+  },
+  "package": "ordered-json/ordered-json-extension:*@dev",
+  "commands": [
+    {
+      "arguments": [
+        "--version"
+      ],
+      "exit_code": 0
+    },
+    {
+      "arguments": [
+        "repository:add",
+        "path",
+        "."
+      ],
+      "exit_code": 0
+    },
+    {
+      "arguments": [
+        "info",
+        "ordered-json/ordered-json-extension:*@dev"
+      ],
+      "exit_code": 0
+    },
+    {
+      "arguments": [
+        "build",
+        "ordered-json/ordered-json-extension:*@dev",
+        "-j",
+        "2",
+        "-vv"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "build_warnings": [
+    "checking for -single_module linker flag... ld: warning: -single_module is obsolete",
+    "ld: warning: -undefined suppress is deprecated"
+  ],
+  "artifact": {
+    "path": "php-extension/src/modules/ordered_json.so",
+    "sha256": "de5a4df40d829d76cdbd662802a6ba9d8020e0a40a4376387b8f185086774238"
+  },
+  "cases": {
+    "official": 17,
+    "fixtures": 98,
+    "supplementary": 318,
+    "total": 433
+  },
+  "implementations": {
+    "php-extension": {
+      "status": "passed",
+      "cases": 433,
+      "runtime": {
+        "php": "8.5.10",
+        "extension_version": "0.1.0"
+      }
+    }
+  },
+  "supplementary": {
+    "project": "nst/JSONTestSuite",
+    "revision": "1ef36fa01286573e846ac449e8683f8833c5b26a",
+    "cases": 318,
+    "inputs_sha256": "dafa7facfed6700b0a2f16207fb1d3b557f9e45d3abd84f2dfb666538d10c332"
   }
 }

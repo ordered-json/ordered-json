@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "checked_at": "2026-09-07T11:39:14+00:00",
+  "checked_at": "2026-09-07T13:36:10+00:00",
   "source": {
     "state": "available",
     "url": "https://github.com/ordered-json/ordered-json",
@@ -24,6 +24,53 @@
     },
     "php-extension": {
       "state": "not-verified"
+    }
+  },
+  "implementation_sources": {
+    "javascript": {
+      "state": "available",
+      "url": "https://github.com/ordered-json/javascript",
+      "branch": "main",
+      "revision": "d3b1f3473ce2645c79c772940df622c4d8b0bca7",
+      "visibility": "public",
+      "github_releases": [],
+      "version_tags": []
+    },
+    "rust": {
+      "state": "available",
+      "url": "https://github.com/ordered-json/rust",
+      "branch": "main",
+      "revision": "266ab5c95d7095342521701994462c9f057cde1b",
+      "visibility": "public",
+      "github_releases": [],
+      "version_tags": []
+    },
+    "go": {
+      "state": "available",
+      "url": "https://github.com/ordered-json/go",
+      "branch": "main",
+      "revision": "2588cbd59b442e9c7231a1b8d945a16142851141",
+      "visibility": "public",
+      "github_releases": [],
+      "version_tags": []
+    },
+    "php": {
+      "state": "available",
+      "url": "https://github.com/ordered-json/php",
+      "branch": "main",
+      "revision": "2571dacad60affcc299972474b53f2b9e6848967",
+      "visibility": "public",
+      "github_releases": [],
+      "version_tags": []
+    },
+    "php-extension": {
+      "state": "available",
+      "url": "https://github.com/ordered-json/php-extension",
+      "branch": "main",
+      "revision": "479d6a28c50f34297fc0a0042a83d46a7a88e6bb",
+      "visibility": "public",
+      "github_releases": [],
+      "version_tags": []
     }
   }
 }

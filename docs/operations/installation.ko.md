@@ -1,5 +1,5 @@
 <!-- doc-id: installation -->
-<!-- source-sha256: 19856da83a50664d2febc9015882e413c5555f07790caaf5f1e756df59e2a7f7 -->
+<!-- source-sha256: f4631b03eb671c3aaf704bed0018fcd2935510fab3ee41e0df885dbe0266c4a9 -->
 # 설치와 실행
 
 [English](installation.md)
@@ -9,11 +9,11 @@
 
 | 구성 요소 | 선언된 요구사항 | 현재 식별자 | 메타데이터 |
 | --- | --- | --- | --- |
-| JavaScript | Node.js >= 20, ESM | `ordered-json`, 0.1.0 | [package.json](../../js/package.json) |
-| Rust | Rust >= 1.70, edition 2021 | `ordered-json`, 0.1.0 | [Cargo.toml](../../rust/Cargo.toml) |
-| Go | Go >= 1.22 | `github.com/ordered-json/go` 모듈, `orderedjson` 패키지 | [go.mod](../../go/go.mod) |
-| PHP | PHP >= 8.2, JSON 및 PCRE 확장 | `ordered-json/ordered-json`, `OrderedJson` 네임스페이스 | [composer.json](../../php/composer.json) |
-| 네이티브 PHP | 일치하는 PHP 개발 헤더, C 컴파일러, phpize, make | `ordered_json` 확장, 0.1.0 | [확장 소스](../../php-extension/src/ordered_json.c) |
+| JavaScript | Node.js >= 20, ESM | `ordered-json`, 0.1.0 | [package.json](https://github.com/ordered-json/javascript/blob/d3b1f3473ce2645c79c772940df622c4d8b0bca7/package.json) |
+| Rust | Rust >= 1.70, edition 2021 | `ordered-json`, 0.1.0 | [Cargo.toml](https://github.com/ordered-json/rust/blob/266ab5c95d7095342521701994462c9f057cde1b/Cargo.toml) |
+| Go | Go >= 1.22 | `github.com/ordered-json/go` 모듈, `orderedjson` 패키지 | [go.mod](https://github.com/ordered-json/go/blob/2588cbd59b442e9c7231a1b8d945a16142851141/go.mod) |
+| PHP | PHP >= 8.2, JSON 및 PCRE 확장 | `ordered-json/ordered-json`, `OrderedJson` 네임스페이스 | [composer.json](https://github.com/ordered-json/php/blob/2571dacad60affcc299972474b53f2b9e6848967/composer.json) |
+| 네이티브 PHP | 일치하는 PHP 개발 헤더, C 컴파일러, phpize, make | `ordered_json` 확장, 0.1.0 | [확장 소스](https://github.com/ordered-json/php-extension/blob/479d6a28c50f34297fc0a0042a83d46a7a88e6bb/src/ordered_json.c) |
 | 저장소 검사 | Python >= 3.9, Git, make, 위 런타임 전체 | `make check` | [검증](validation.ko.md) |
 
 선언된 최소 버전이며 모든 최소 버전에서 테스트했다는 의미는 아닙니다. 실제 버전은 [verification.json](../verification.json)에 기록합니다. JavaScript, Rust, Go는 외부 런타임 라이브러리에 의존하지 않습니다.
@@ -22,11 +22,11 @@
 ## 소스 체크아웃
 
 ~~~sh
-git clone https://github.com/ordered-json/ordered-json.git
+git clone --recurse-submodules https://github.com/ordered-json/ordered-json.git
 cd ordered-json
 ~~~
 
-로컬 모듈 또는 소스 디렉터리를 사용합니다. 레지스트리 설치와 게시는 검증되지 않았습니다. [배포](distribution.ko.md)를 확인합니다.
+기존 체크아웃은 `git submodule update --init --recursive`로 초기화합니다. 각 구현을 자체 저장소에서 독립적으로 복제할 수도 있습니다. 로컬 모듈 또는 소스 디렉터리를 사용합니다. 레지스트리 설치와 게시는 검증되지 않았습니다. [배포](distribution.ko.md)를 확인합니다.
 
 - JavaScript: `js/index.js`에서 가져옵니다. TypeScript 선언은 `js/index.d.ts`에 있습니다.
 - Rust: `path`가 `rust/`를 지정하는 로컬 Cargo 의존성을 설정합니다.
@@ -40,6 +40,7 @@ cd ordered-json
 
 ~~~sh
 cd php-extension/src
+if test -f Makefile; then make distclean; fi
 phpize --clean
 phpize
 ./configure --enable-ordered-json
@@ -52,6 +53,6 @@ make -j2
 php -n -d extension="$PWD/php-extension/src/modules/ordered_json.so" application.php
 ~~~
 
-`application.php`는 호출자의 애플리케이션입니다. `php -n`은 php.ini를 무시하며 필수 내장 JSON 및 PCRE 지원은 사용할 수 있어야 합니다. 소스에는 `config.w32`가 포함돼 있지만 Windows 빌드는 검증되지 않았습니다.
+`application.php`는 호출자의 애플리케이션입니다. `php -n`은 php.ini를 무시하며 필수 내장 JSON 및 PCRE 지원은 사용할 수 있어야 합니다. 소스에는 `config.w32`가 포함돼 있지만 Windows와 ZTS 빌드는 검증되지 않았습니다. PIE에는 `pkg-config`를 포함한 빌드 도구가 필요하며 macOS의 Homebrew 패키지는 `pkgconf`입니다. 재현 가능한 PIE 빌드와 공통 검증 절차는 [PIE 산출물 검사](validation.ko.md#pie)를 참조합니다.
 
 공통 PHP API와 파서 선택 규칙은 [API 계약](../spec/api.ko.md#php)에 정의합니다. 네이티브 소스나 PHP 빌드 설정을 변경하면 모듈을 다시 빌드합니다.

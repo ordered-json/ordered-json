@@ -3,14 +3,19 @@
 
 [한국어](README.ko.md)
 
-JSON libraries for JavaScript, Rust, Go, and PHP. Objects use associative maps that preserve the first occurrence order of keys at every depth. Repeated keys replace the value without changing that order.
+JSON libraries for JavaScript, Rust, Go, and PHP. Objects use associative maps that preserve document key order at every depth. Repeated keys retain the first position and the last value.
 
-The repository includes pure PHP and a native PHP extension. [Installation](docs/operations/installation.md) lists the language identifiers and runtime requirements.
+This repository maintains the common specification, official examples, expected results, and verifier. Five independent implementation repositories are included as submodules at exact commits. PHP and the native PHP extension have separate repositories.
 
 <a id="start"></a>
 ## Start
 
-Run the JavaScript implementation with an official input from the repository root:
+~~~sh
+git clone --recurse-submodules https://github.com/ordered-json/ordered-json.git
+cd ordered-json
+~~~
+
+For an existing checkout, run `git submodule update --init --recursive`. Run JavaScript with an official input from the repository root:
 
 ~~~sh
 node --input-type=module <<'JS'
@@ -22,31 +27,32 @@ console.log(stringify(parse(example.input)));
 JS
 ~~~
 
-| Implementation | Usage |
-| --- | --- |
-| JavaScript and TypeScript declarations | [JavaScript](js/README.md) |
-| Rust | [Rust](rust/README.md) |
-| Go | [Go](go/README.md) |
-| PHP | [PHP](php/README.md) |
-| PHP native extension | [Native extension](php-extension/README.md) |
+| Repository | Contents | Checkout path |
+| --- | --- | --- |
+| [javascript](https://github.com/ordered-json/javascript) | JavaScript and TypeScript declarations | `js/` |
+| [rust](https://github.com/ordered-json/rust) | Rust | `rust/` |
+| [go](https://github.com/ordered-json/go) | Go | `go/` |
+| [php](https://github.com/ordered-json/php) | Pure PHP and the Value API | `php/` |
+| [php-extension](https://github.com/ordered-json/php-extension) | Native PHP extension with PIE metadata | `php-extension/` |
 
 <a id="verification"></a>
 ## Verification
 
-All five implementations use the same [official examples](examples/README.md) and shared verifier.
+All implementations use the same [official examples](examples/README.md) and shared expectations. Each implementation repository also provides `make check` for its current checkout.
 
 ~~~sh
 make check
 ~~~
 
-The required tools and supplementary test procedure are documented in [verification operations](docs/operations/validation.md). Passing tests and publishing packages are separate states.
+The aggregate record applies to the pinned submodule commits. See [installation](docs/operations/installation.md) for tools and identifiers, and [verification](docs/operations/validation.md) for standalone, supplementary, and PIE checks. Tests and package publication are recorded separately.
 
 <a id="documents"></a>
 ## Documents
 
 - [JSON contract](docs/spec/json-contract.md)
 - [API contract](docs/spec/api.md)
-- [Feature and implementation state](docs/features.md)
+- [Repository contract](docs/spec/repositories.md)
+- [Feature state](docs/features.md)
 - [Distribution state](docs/operations/distribution.md)
 - [Changelog](CHANGELOG.md)
 - [Documentation management](docs/documentation-plan.md)

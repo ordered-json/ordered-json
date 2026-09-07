@@ -93,3 +93,33 @@ class RepositoryChecks(unittest.TestCase):
             (root / '.gitmodules').write_text('[submodule "javascript"]\npath = js\n')
             with self.assertRaisesRegex(ValueError, 'Missing initialized submodule'):
                 submodule_revisions(root, require_pinned=True)
+
+    def test_modified_or_unrecorded_submodule_cannot_produce_aggregate_record(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+
+            def git(path, *arguments):
+                return subprocess.check_output(['git', '-c', 'user.name=Test', '-c',
+                    'user.email=test@example.invalid', *arguments], cwd=path,
+                    text=True, stderr=subprocess.PIPE).strip()
+
+            git(root, 'init', '--quiet')
+            (root / '.gitmodules').write_text('')
+            for entry in REGISTRY['repositories'].values():
+                path = root / entry['path']
+                path.mkdir()
+                git(path, 'init', '--quiet')
+                (path / 'source').write_text('first')
+                git(path, 'add', 'source')
+                git(path, 'commit', '--quiet', '-m', 'Add source')
+                revision = git(path, 'rev-parse', 'HEAD')
+                git(root, 'update-index', '--add', '--cacheinfo', '160000', revision, entry['path'])
+            self.assertEqual(set(submodule_revisions(root, require_pinned=True)), set(REGISTRY['repositories']))
+            candidate = root / REGISTRY['repositories']['javascript']['path']
+            (candidate / 'source').write_text('second')
+            with self.assertRaisesRegex(ValueError, 'Submodule is modified'):
+                submodule_revisions(root, require_pinned=True)
+            git(candidate, 'add', 'source')
+            git(candidate, 'commit', '--quiet', '-m', 'Update source')
+            with self.assertRaisesRegex(ValueError, 'differs from its recorded commit'):
+                submodule_revisions(root, require_pinned=True)

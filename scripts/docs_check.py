@@ -180,6 +180,18 @@ def check_distribution(record, features):
         raise ValueError('Source visibility observation is missing')
     if not isinstance(record.get('github_releases'), list) or not isinstance(record.get('version_tags'), list):
         raise ValueError('Release and tag observations are required')
+    if 'implementation_sources' in record:
+        observations = record['implementation_sources']
+        if set(observations) != set(REGISTRY['repositories']):
+            raise ValueError('Implementation source observations are incomplete')
+        for name, observation in observations.items():
+            expected_url = REGISTRY['repositories'][name]['url'].removesuffix('.git')
+            if (observation.get('state') != 'available' or observation.get('url') != expected_url
+                    or observation.get('branch') != 'main' or observation.get('visibility') != 'public'
+                    or not re.fullmatch(r'[a-f0-9]{40}', observation.get('revision', ''))):
+                raise ValueError('Invalid implementation source observation: ' + name)
+            if not isinstance(observation.get('github_releases'), list) or not isinstance(observation.get('version_tags'), list):
+                raise ValueError('Implementation release and tag observations are required: ' + name)
     registries = record['registries']
     if set(registries) != {'npm', 'crates.io', 'packagist', 'go', 'php-extension'}:
         raise ValueError('Registry observations are incomplete')
@@ -195,6 +207,47 @@ def check_distribution(record, features):
     for identifier, (_, _, distribution, _, _) in features.items():
         if distribution == 'published' and identifier not in published:
             raise ValueError('Published feature has no observed artifact: ' + identifier)
+
+
+def check_pie_verification(root, record):
+    if record.get('schema_version') != 1 or record.get('scope') != 'pie-build' or record.get('status') != 'passed':
+        raise ValueError('Invalid PIE verification record')
+    datetime.fromisoformat(record['checked_at'])
+    if record.get('sources') != source_manifest(root):
+        raise ValueError('PIE verification is stale; run scripts/check_pie.py')
+    if record.get('submodules') != submodule_revisions(root, require_pinned=True):
+        raise ValueError('PIE verification submodule revisions differ from the current pins')
+    if record.get('package') != 'ordered-json/ordered-json-extension:*@dev':
+        raise ValueError('PIE verification uses an unexpected package')
+    for value in (record['pie']['phar_sha256'], record['artifact']['sha256']):
+        if not re.fullmatch(r'[a-f0-9]{64}', value):
+            raise ValueError('PIE tool and artifact hashes are required')
+    if not record['pie'].get('version'):
+        raise ValueError('The PIE version is required')
+    commands = record['commands']
+    if any(command.get('exit_code') != 0 for command in commands) or not any(
+            command['arguments'][:1] == ['build'] for command in commands):
+        raise ValueError('A successful PIE build is required')
+    counts = record['cases']
+    if set(counts) != {'official', 'fixtures', 'supplementary', 'total'} or any(
+            type(value) is not int or value < 0 for value in counts.values()):
+        raise ValueError('Invalid PIE verification case counts')
+    if counts['total'] != counts['official'] + counts['fixtures'] + counts['supplementary']:
+        raise ValueError('PIE verification case total is inconsistent')
+    official = json.loads((root / 'examples/official.json').read_text())
+    fixtures = sum(len(list((root / 'fixtures' / category).glob('*.json'))) for category in ('valid', 'invalid'))
+    if counts['official'] != len(official['cases']) or counts['fixtures'] != fixtures:
+        raise ValueError('PIE verification counts differ from the shared inputs')
+    if set(record['implementations']) != {'php-extension'}:
+        raise ValueError('PIE verification requires the native adapter')
+    native = record['implementations']['php-extension']
+    if native.get('status') != 'passed' or native.get('cases') != counts['total']:
+        raise ValueError('The PIE artifact must pass every shared case')
+    if not native['runtime'].get('php') or not native['runtime'].get('extension_version'):
+        raise ValueError('PIE verification requires PHP and extension versions')
+    supplementary = record.get('supplementary')
+    if counts['supplementary'] and (not supplementary or supplementary.get('cases') != counts['supplementary']):
+        raise ValueError('PIE supplementary input count is inconsistent')
 
 
 def check_repository(root, include_children=True):
@@ -275,6 +328,11 @@ def check_repository(root, include_children=True):
             check_distribution(read_json('docs/distribution.json'), features)
         except (ValueError, KeyError, TypeError, OSError) as issue:
             error('docs/distribution.json', str(issue))
+        if (root / 'docs/pie-verification.json').exists():
+            try:
+                check_pie_verification(root, read_json('docs/pie-verification.json'))
+            except (ValueError, KeyError, TypeError, OSError) as issue:
+                error('docs/pie-verification.json', str(issue))
         if include_children:
             for name, path in repository_paths(root).items():
                 if (path / '.git').exists():
