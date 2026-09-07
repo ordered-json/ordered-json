@@ -6,7 +6,7 @@
 <a id="usage"></a>
 ## Usage
 
-This module has no external dependencies. See [installation](../docs/operations/installation.md) for requirements and a local module replacement. In this function fragment, import `github.com/ordered-json/ordered-json/go` and use the `input` string from an object case in [official.json](../examples/official.json) as `source`. The surrounding function returns an error.
+This module has no external dependencies. See [installation](../docs/operations/installation.md) for requirements and a local module replacement. In this function fragment, import `github.com/ordered-json/go` and use the `input` string from an object case in [official.json](../examples/official.json) as `source`. The surrounding function returns an error.
 
 ~~~go
 value, err := orderedjson.Parse(source)

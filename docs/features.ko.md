@@ -1,5 +1,5 @@
 <!-- doc-id: features -->
-<!-- source-sha256: 22395885e1644f650b96aae9c4d241bc977013139e875621e57055040d72baa3 -->
+<!-- source-sha256: 317fc7beac8f4f512a1252b57def912563e37a5318cd5df6c04d422869f5e5c8 -->
 # 기능 상태
 
 [English](features.md)
@@ -20,8 +20,9 @@
 | F-CONSTRUCT | 순서 있는 연관배열과 Value 객체 배열로 생성 | implemented | shared-suite | [결과](verification.json) | source-only | [생성](spec/json-contract.ko.md#construction) |
 | F-PHP-NATIVE | 공통 PHP API를 사용하는 PHP 확장 파서와 직렬화 | implemented | shared-suite | [결과](verification.json) | source-only | [PHP](spec/api.ko.md#php) |
 | F-DOCS | 영한 문서, 링크·상태 검사, 검증 최신 여부 | implemented | docs-tests | [결과](verification.json) | source-only | [절차](documentation-plan.ko.md#checks) |
+| F-REPOS | 독립 구현 저장소와 공통 적합성 검사 | partial | not-verified | — | not-distributed | [저장소](spec/repositories.ko.md) |
 
 <a id="limits"></a>
 ## 검증 및 배포 한계
 
-공통 사례 통과는 기록된 인수 기준에 대한 검증입니다. 모든 입력, 선언한 최소 런타임 전체, 모든 플랫폼, 모든 호스트 인코더 연동을 검증한 결과는 아닙니다. [검증 한계](operations/validation.ko.md#limits)를 확인합니다. 소스 메타데이터에는 개발 버전 문자열이 있으며 이 표는 레지스트리 릴리스를 나타내지 않습니다. 현재 이 표에 미완료로 표시한 구현 작업은 없습니다.
+공통 사례 통과는 기록된 인수 기준에 대한 검증입니다. 모든 입력, 선언한 최소 런타임 전체, 모든 플랫폼, 모든 호스트 인코더 연동을 검증한 결과는 아닙니다. [검증 한계](operations/validation.ko.md#limits)를 확인합니다. 소스 메타데이터에는 개발 버전 문자열이 있으며 이 표는 레지스트리 릴리스를 나타내지 않습니다. 저장소 분리를 진행 중입니다.

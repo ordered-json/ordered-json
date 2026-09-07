@@ -5,7 +5,7 @@
 
 The [JSON contract](json-contract.md) defines behavior shared by all implementations. This document defines the current language bindings. The current identifiers are listed in [installation](../operations/installation.md).
 
-The project and package name is `ordered-json`. Rust imports use `ordered_json`. Go uses module `github.com/ordered-json/ordered-json/go` and package `orderedjson`. PHP uses Composer package `ordered-json/ordered-json`, namespace `OrderedJson`, and extension `ordered_json`. Native function and constant prefixes are `ordered_json_` and `ORDERED_JSON_`.
+The project and package name is `ordered-json`. Rust imports use `ordered_json`. Go uses module `github.com/ordered-json/go` and package `orderedjson`. PHP uses Composer package `ordered-json/ordered-json`, namespace `OrderedJson`, and extension `ordered_json`. Native function and constant prefixes are `ordered_json_` and `ORDERED_JSON_`.
 
 <a id="values"></a>
 ## Values and parsing

@@ -6,7 +6,7 @@ import (
 	"encoding/json"
 	"fmt"
 	"os"
-	"github.com/ordered-json/ordered-json/go"
+	"github.com/ordered-json/go"
 	"strings"
 )
 

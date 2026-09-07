@@ -1,5 +1,5 @@
 <!-- doc-id: go -->
-<!-- source-sha256: dc04058bbf50051ae671ea4905443b3dc5487c18007324e329d7ebbd5c03ad61 -->
+<!-- source-sha256: 6dd8bbc6ab37ff3aeff2eaa6457ffff87bb8e0f7a5363ba668c7ba8942c55a77 -->
 # Go
 
 [English](README.md)
@@ -7,7 +7,7 @@
 <a id="usage"></a>
 ## 사용
 
-이 모듈은 외부 의존성이 없습니다. 요구사항과 로컬 모듈 대체 설정은 [설치](../docs/operations/installation.ko.md)를 확인합니다. 아래 함수 코드에서 `github.com/ordered-json/ordered-json/go`를 가져오고 [official.json](../examples/official.json)의 객체 사례에 있는 `input` 문자열을 `source`로 사용합니다. 코드를 포함한 함수는 오류를 반환합니다.
+이 모듈은 외부 의존성이 없습니다. 요구사항과 로컬 모듈 대체 설정은 [설치](../docs/operations/installation.ko.md)를 확인합니다. 아래 함수 코드에서 `github.com/ordered-json/go`를 가져오고 [official.json](../examples/official.json)의 객체 사례에 있는 `input` 문자열을 `source`로 사용합니다. 코드를 포함한 함수는 오류를 반환합니다.
 
 ~~~go
 value, err := orderedjson.Parse(source)
